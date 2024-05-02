@@ -1,0 +1,18 @@
+import numpy as np
+
+a = 1
+b = 2
+c = 3
+
+u = np.linspace(0, 2*np.pi, 100)
+v = np.linspace(0, np.pi, 100)
+u, v = np.meshgrid(u, v)
+
+x = a * np.cos(u) * np.sin(v)
+y = b * np.sin(u) * np.sin(v)
+z = c * np.cos(v)
+
+data = np.column_stack((x.flatten(), y.flatten(), z.flatten()))
+np.savetxt('ellipsoid_data.csv', data, delimiter=',', header='x,y,z', comments='')
+
+print("Данные сохранены в ellipsoid_data.csv")
